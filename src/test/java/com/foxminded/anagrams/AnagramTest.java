@@ -7,41 +7,52 @@ import static com.foxminded.anagrams.Anagram.reverseText;
 
 public class AnagramTest {
 
-	String actual;
-
-	@Test(expected = Exception.class)
-	public void testTextIsNull() {
-		actual = reverseText(null);
-		assertNull("Verify that object is null", actual);
+	@Test(expected = NullPointerException.class)
+	public void shouldNullPointerExceptionIfGivenNull() {
+		String actual = reverseText(null);
+		
+		assertNull(actual);
 	}
 
 	@Test
-	public void testTextIsEmpty() {
-		actual = reverseText("");
+	public void shouldReturnEmptyText() {
+		String actual = reverseText("");
+		
 		assertEquals("", actual);
 	}
 
 	@Test
-	public void testTextIsAlphabetic() {
-		actual = reverseText("abcd efgh");
+	public void shouldReturnDigitsOnTheSamePlases() {
+		String actual = reverseText("12345 67890");
+		
+		assertEquals("12345 67890", actual);
+	}
+	
+	@Test
+	public void shouldReturnReversedWords() {
+		String actual = reverseText("abcd efgh");
+		
 		assertEquals("dcba hgfe", actual);
 	}
 
 	@Test
-	public void testTextOfAnyCharacters() {
-		actual = reverseText("a1bcd efg!h");
+	public void shouldReturnDigitsOnTheSamePlasesAndReversedLiteterals() {
+		String actual = reverseText("a1bcd efg!h");
+		
 		assertEquals("d1cba hgf!e", actual);
 	}
 
 	@Test
-	public void testTextIsSingleSpace() {
-		actual = reverseText(" ");
+	public void shouldReturnEmptyTextIfInputTextIsSingleSpace() {
+		String actual = reverseText(" ");
+		
 		assertEquals("", actual);
 	}
 
 	@Test
-	public void testDeleteSpacesAfterText() {
-		actual = reverseText("a1bcd efg!h     ");
+	public void shouldDeleteSpacesAfterCharacters() {
+		String actual = reverseText("a1bcd efg!h     ");
+		
 		assertEquals("d1cba hgf!e", actual);
 	}
 
