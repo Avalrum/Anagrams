@@ -4,53 +4,54 @@ import org.junit.Test;
 import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static com.foxminded.anagrams.Anagram.reverseText;
+import static com.foxminded.anagrams.Anagram.reverseWord;
 
 public class AnagramTest {
 
-	@Test(expected = NullPointerException.class)
-	public void shouldNullPointerExceptionIfGivenNull() {
-		String actual = reverseText(null);
-		
-		assertNull(actual);
-	}
-
 	@Test
-	public void shouldReturnEmptyText() {
-		String actual = reverseText("");
+	public void givenNullWhenReverWordThenEmptyString() {
+		String actual = reverseWord(null);
 		
 		assertEquals("", actual);
 	}
 
 	@Test
-	public void shouldReturnDigitsOnTheSamePlases() {
-		String actual = reverseText("12345 67890");
+	public void givenEmptyStringWhenReverseTextThenEmptyString() {
+		String actual = reverseText("");
 		
-		assertEquals("12345 67890", actual);
+		assertEquals("", actual);
 	}
 	
 	@Test
-	public void shouldReturnReversedWords() {
-		String actual = reverseText("abcd efgh");
-		
-		assertEquals("dcba hgfe", actual);
-	}
-
-	@Test
-	public void shouldReturnDigitsOnTheSamePlasesAndReversedLiteterals() {
-		String actual = reverseText("a1bcd efg!h");
-		
-		assertEquals("d1cba hgf!e", actual);
-	}
-
-	@Test
-	public void shouldReturnEmptyTextIfInputTextIsSingleSpace() {
+	public void givenSingleSpaceWhenReverseTextThenEmptyString() {
 		String actual = reverseText(" ");
 		
 		assertEquals("", actual);
 	}
 
 	@Test
-	public void shouldDeleteSpacesAfterCharacters() {
+	public void givenDigitsWhenReverseTextThenDigitsOnTheSomePlaces() {
+		String actual = reverseText("12345 67890");
+		
+		assertEquals("12345 67890", actual);
+	}
+	
+	@Test
+	public void givenLiteralsTextWhenReverseTextsThenReversedText() {
+		String actual = reverseText("abcd efgh");
+		
+		assertEquals("dcba hgfe", actual);
+	}
+
+	@Test
+	public void givenLiteralsAndDigitsTextWhenReverseTextThenDigitsOnTheSomePlacesAndReversedLiterals() {
+		String actual = reverseText("a1bcd efg!h");
+		
+		assertEquals("d1cba hgf!e", actual);
+	}
+
+	@Test
+	public void givenTextWithSpacesWhenReversTextThenTrimAllSpacesAfterLastSymbol() {
 		String actual = reverseText("a1bcd efg!h     ");
 		
 		assertEquals("d1cba hgf!e", actual);

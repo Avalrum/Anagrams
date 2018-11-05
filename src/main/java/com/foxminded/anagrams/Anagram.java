@@ -1,6 +1,7 @@
 package com.foxminded.anagrams;
 
 import java.util.Scanner;
+
 import static java.lang.Character.isAlphabetic;
 
 public class Anagram {
@@ -27,25 +28,28 @@ public class Anagram {
 		return result.toString();
 	}
 
-	private static String reverseWord(String word) {
-		char[] chars = word.toCharArray();
-		int leftIndex = 0;
-		int rightIndex = chars.length - 1;
+	static String reverseWord(String word) {
+		if (word != null) {
+			char[] chars = word.toCharArray();
+			int leftIndex = 0;
+			int rightIndex = chars.length - 1;
 
-		while (leftIndex < rightIndex) {
-			if (!isAlphabetic(chars[leftIndex])) {
-				leftIndex++;
-			} else if (!isAlphabetic(chars[rightIndex])) {
-				rightIndex--;
-			} else {
-				char leftChar = chars[leftIndex];
-				chars[leftIndex] = chars[rightIndex];
-				chars[rightIndex] = leftChar;
-				leftIndex++;
-				rightIndex--;
+			while (leftIndex < rightIndex) {
+				if (!isAlphabetic(chars[leftIndex])) {
+					leftIndex++;
+				} else if (!isAlphabetic(chars[rightIndex])) {
+					rightIndex--;
+				} else {
+					char leftChar = chars[leftIndex];
+					chars[leftIndex] = chars[rightIndex];
+					chars[rightIndex] = leftChar;
+					leftIndex++;
+					rightIndex--;
+				}
 			}
-		}
-		return new String(chars);
+			return new String(chars);
+		} else
+			return "";
 	}
 
 }
