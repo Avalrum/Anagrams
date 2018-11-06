@@ -9,7 +9,7 @@ import static com.foxminded.anagrams.Anagram.reverseText;
 public class AnagramTest {
 
 	@Test
-	public void givenNullWhenRevrseTextThenEmptyString() {
+	public void givenNullWhenReverseTextThenEmptyString() {
 		String actual = reverseText(null);
 		
 		assertEquals("", actual);
