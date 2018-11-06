@@ -4,13 +4,13 @@ import org.junit.Test;
 import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static com.foxminded.anagrams.Anagram.reverseText;
-import static com.foxminded.anagrams.Anagram.reverseWord;
+
 
 public class AnagramTest {
 
 	@Test
-	public void givenNullWhenReverWordThenEmptyString() {
-		String actual = reverseWord(null);
+	public void givenNullWhenRevrseTextThenEmptyString() {
+		String actual = reverseText(null);
 		
 		assertEquals("", actual);
 	}
